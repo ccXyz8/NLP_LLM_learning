@@ -1,10 +1,8 @@
-from collections.abc import generator
-
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-class MutiGPULossCompute:
+class MultiGPULossCompute:
     def __init__(self, generator, criterion, devices,opt=None,chunk_size=5):
         self.generator = generator
         self.criterion = nn.parallel.replicate(criterion, devices=devices)
